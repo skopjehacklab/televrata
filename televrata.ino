@@ -40,35 +40,27 @@ void loop() {
     // Get the character from the cellular serial por
     // With an incomming call, a "RING" message is sent out
     incoming_char=SIM900.read();
+    Serial.print(incoming_char);
     //  Check if the shield is sending a "RING" message
     if (incoming_char=='R') {
       delay(10);
-      Serial.print(incoming_char);
       incoming_char=SIM900.read();
+      Serial.print(incoming_char);
       if (incoming_char =='I') {
         delay(10);
-        Serial.print(incoming_char);
         incoming_char=SIM900.read();
+        Serial.print(incoming_char);
         if (incoming_char=='N') {
           delay(10);
-          Serial.print(incoming_char);
           incoming_char=SIM900.read();
+          Serial.print(incoming_char);
           if (incoming_char=='G') {
             delay(10);
-            Serial.print(incoming_char);
             // If the message received from the shield is RING
             gotRing();
-          } else {
-            Serial.print(incoming_char);
           }
-        } else {
-          Serial.print(incoming_char);
         }
-      } else {
-        Serial.print(incoming_char);
       }
-    } else {
-      Serial.print(incoming_char);
     }
   }
 }
@@ -83,4 +75,3 @@ void gotRing() {
   digitalWrite(RELAY_PIN, LOW);        // sets the digital pin 13 off
   digitalWrite(LED_BUILTIN, LOW);      // turn the LED off by making the voltage LOW
 }
-
